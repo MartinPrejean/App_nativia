@@ -37,12 +37,8 @@ class CustomFragment : Fragment() {
 
         contactRecyclerView.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
 
-
-
         // Liaison de l'adaptateur à la RecyclerView
-        // contactRecyclerView.adapter = FastAdapter.with(contactAdapter)
-
-
+        contactRecyclerView.adapter = contactAdapter
 
         // accès aux vues
 
@@ -54,17 +50,13 @@ class CustomFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        contactAdapter = ContactRecyclerAdapter()
         addDataSet()
-        if (::contactAdapter.isInitialized){
-            contactAdapter = ContactRecyclerAdapter()
-        }
     }
 
     private fun addDataSet(){
         val data = ContactList.createDataSet()
-        if (::contactAdapter.isInitialized){
-            contactAdapter.submitList(data)
-        }
+        contactAdapter.submitList(data)
 
     }
 

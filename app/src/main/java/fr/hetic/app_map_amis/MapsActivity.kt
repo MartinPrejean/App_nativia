@@ -34,8 +34,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
-    private lateinit var contactAdapter: ContactRecyclerAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
