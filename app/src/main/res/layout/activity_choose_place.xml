@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-android:layout_width="match_parent"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
 android:layout_height="match_parent"
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools">
@@ -13,6 +13,22 @@ xmlns:tools="http://schemas.android.com/tools">
         android:layout_height="match_parent"
         tools:context=".ChoosePlace" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/confirmPin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageView
         android:id="@+id/imgPinUp"
         android:layout_width="wrap_content"
@@ -20,4 +36,5 @@ xmlns:tools="http://schemas.android.com/tools">
         android:layout_centerInParent="true"
         android:contentDescription="TODO"
         android:src="@drawable/ic_pin" />
+
 </RelativeLayout>
