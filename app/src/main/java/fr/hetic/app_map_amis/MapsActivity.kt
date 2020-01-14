@@ -1,7 +1,9 @@
 package fr.hetic.app_map_amis
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -9,8 +11,7 @@ import com.google.android.gms.location.*
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import fr.hetic.app_map_amis.adapter.ContactRecyclerAdapter
-import fr.hetic.app_map_amis.data.ContactList
+import kotlinx.android.synthetic.main.fragment_custom.*
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -34,6 +35,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
@@ -50,6 +53,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         locationRequest.interval = 10000
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location : Location? ->
+                // Got last known location. In some rare situations this can be null.
+            }
 
         // Vérification des permissions
 
@@ -60,6 +69,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     PERMISSION_LOCATION_REQUEST_CODE)
         } else {
             locationService.requestLocationUpdates(locationRequest, locationCallback, null)
+        }
+
+        btnStartSearchPlace.setOnClickListener {
+            val intent = Intent(this, ChoosePlace::class.java)
+            // start your next activity
+            startActivity(intent)
         }
 
     }
