@@ -6,4 +6,5 @@
     <string name="textview">TextView</string>
     <string name="confirmPin">Confimer la position</string>
     <string name="title_activity_choose_place">Map</string>
+    <string name="title_activity_api_call">ApiCall</string>
 </resources>

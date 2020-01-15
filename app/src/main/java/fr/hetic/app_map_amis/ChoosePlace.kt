@@ -21,7 +21,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_choose_place.*
 
@@ -54,6 +53,22 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         mapFragment.getMapAsync(this)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+        /*
+        btnConfirmPosition.setOnClickListener {
+            val intent = Intent(this, ApiCall::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
+         */
+
+        /*
+        val simpleDateFormat = SimpleDateFormat("yyyyMMdd'T'HHmmss")
+        val date = simpleDateFormat.parse("20200115T143726")
+
+
+        val simpleDateFormat2 = SimpleDateFormat("HH:mm:ss")
+        val stringDate = simpleDateFormat2.format(date)
+         */
     }
 
 
@@ -216,9 +231,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         // and place it on the current map camera position
         val markerOptions = MarkerOptions().position(mMap.cameraPosition.target)
         mMap.addMarker(markerOptions)
-
-        val latitudeMarker = mMap.cameraPosition.target.latitude
-        val longitudeMarker = mMap.cameraPosition.target.longitude
 
     }
 
