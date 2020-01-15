@@ -1,21 +1,11 @@
 package fr.hetic.app_map_amis
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import com.google.android.gms.location.*
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_custom.*
 
 
@@ -45,7 +35,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.setMyLocationEnabled(true)
+        //mMap.setMyLocationEnabled(true)
 
     }
 

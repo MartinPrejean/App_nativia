@@ -64,15 +64,15 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
 
 
-        var button: Button = findViewById(R.id.button)
+        /*var button: Button = findViewById(R.id.btnConfirmPosition)
         ref = FirebaseDatabase.getInstance().getReference("trip")
         button.setOnClickListener{
-            saveTrip()
-        }
+            //saveTrip()
+        }*/
 
 
 
-        val date = Date()
+        /*val date = Date()
         val now = Date()
 
         val interval = (now.time - date.time)/1000 // in seconds
@@ -94,7 +94,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
                     listview.adapter = adapter
                 }
             }
-        })
+        })*/
 
     }
 
