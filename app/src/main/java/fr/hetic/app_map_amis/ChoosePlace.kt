@@ -11,6 +11,8 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -22,6 +24,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_choose_place.*
 
 
@@ -41,6 +45,11 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     private lateinit var lastLocation: Location;
     private lateinit var locationRequest: LocationRequest;
 
+    var latitudeMarker: Double = 48.852053
+    var longitudeMarker: Double = 2.420395
+
+    var tripList = mutableListOf<trip>()
+    lateinit var ref: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +78,70 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         val simpleDateFormat2 = SimpleDateFormat("HH:mm:ss")
         val stringDate = simpleDateFormat2.format(date)
          */
+
+        var button: Button = findViewById(R.id.btnConfirmPosition)
+        button.setOnClickListener{
+            var id = sendLocalisation(latitudeMarker, longitudeMarker)
+        }
+
+        /*
+        var button: Button = findViewById(R.id.btnConfirmPosition)
+        ref = FirebaseDatabase.getInstance().getReference("trip")
+        button.setOnClickListener{
+            //saveTrip()
+        }*/
+
+
+
+        /*val date = Date()
+        val now = Date()
+
+        val interval = (now.time - date.time)/1000 // in seconds
+
+
+        ref.addValueEventListener(object: ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0!!.exists()){
+                    for(h in p0.children){
+                        val trip = h.getValue(trip::class.java)
+                        tripList.add(trip!!)
+                    }
+
+                    val adapter = ListAdapter(applicationContext, R.layout.activity_trip, tripList)
+                    listview.adapter = adapter
+                }
+            }
+        })*/
+
+    }
+
+    fun sendLocalisation(latitude: Double, longitude: Double): String{
+        val localisation = "Paris 18"
+
+
+        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Localisation")
+
+        var locaId : String? = ref.push().key
+        var loca : Localisation = Localisation(locaId!!, latitude, longitude)
+
+        ref.child(locaId!!).setValue(loca).addOnCompleteListener {
+            Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
+        }
+
+        return locaId
+    }
+
+    fun saveTrip(){
+        val tripId : String? = ref.push().key
+        val trip = trip(tripId!!, "Hypo", 8)
+
+        ref.child(tripId!!).setValue(trip).addOnCompleteListener {
+            Toast.makeText(applicationContext, "Saved success", Toast.LENGTH_LONG).show()
+        }
     }
 
 
@@ -221,7 +294,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         Log.v("Onmove cancel","Onmove ");
     }
 
-    override fun onCameraIdle() {
+    override fun onCameraIdle(){
         Log.v("Onmove Idle","Onmove ");
 
         // hiding imageView
@@ -232,6 +305,8 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         val markerOptions = MarkerOptions().position(mMap.cameraPosition.target)
         mMap.addMarker(markerOptions)
 
+        latitudeMarker = mMap.cameraPosition.target.latitude
+        longitudeMarker = mMap.cameraPosition.target.longitude
     }
 
 }
