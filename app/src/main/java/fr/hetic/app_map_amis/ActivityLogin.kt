@@ -3,35 +3,33 @@ package fr.hetic.app_map_amis
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.activity_login.*
-import java.util.concurrent.TimeUnit
 
 class ActivityLogin : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
+    override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser :FirebaseUser? = auth.currentUser
+        updateUI(currentUser)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_login)
 
         auth = FirebaseAuth.getInstance()
 
         btn_login.setOnClickListener {
             save_user()
-        }
-
-        fun onStart() {
-            super.onStart()
-            // Check if user is signed in (non-null) and update UI accordingly.
-            val currentUser :FirebaseUser? = auth.currentUser
-            updateUI(currentUser)
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -78,9 +76,6 @@ class ActivityLogin : AppCompatActivity() {
                     }
 
                 }
-
-            val intent = Intent(this, MapsActivity::class.java)
-            startActivity(intent)
         }
 
     fun updateUI(currentUser: FirebaseUser?)

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragment.CustomFragment">
 
-
     <Button
         android:id="@+id/btnStartSearchPlace"
         android:layout_width="0dp"
