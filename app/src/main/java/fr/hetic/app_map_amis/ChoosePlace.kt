@@ -110,6 +110,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
         val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Localisation")
 
+        //locaId = id group
         var locaId : String? = ref.push().key
         var loca : Localisation = Localisation(locaId!!, latitude, longitude)
 
