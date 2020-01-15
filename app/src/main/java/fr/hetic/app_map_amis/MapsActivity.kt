@@ -35,8 +35,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        //mMap.setMyLocationEnabled(true)
-
+        mMap.isMyLocationEnabled = true;
     }
 
 

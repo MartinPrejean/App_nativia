@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -24,12 +23,10 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_choose_place.*
-import kotlinx.android.synthetic.main.activity_trip.*
-import java.util.*
 
 
 class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
@@ -65,12 +62,30 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         mapFragment.getMapAsync(this)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+        /*
+        btnConfirmPosition.setOnClickListener {
+            val intent = Intent(this, ApiCall::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
+         */
+
+        /*
+        val simpleDateFormat = SimpleDateFormat("yyyyMMdd'T'HHmmss")
+        val date = simpleDateFormat.parse("20200115T143726")
+
+
+        val simpleDateFormat2 = SimpleDateFormat("HH:mm:ss")
+        val stringDate = simpleDateFormat2.format(date)
+         */
 
         var button: Button = findViewById(R.id.btnConfirmPosition)
         button.setOnClickListener{
             var id = sendLocalisation(latitudeMarker, longitudeMarker)
         }
-        /*var button: Button = findViewById(R.id.btnConfirmPosition)
+
+        /*
+        var button: Button = findViewById(R.id.btnConfirmPosition)
         ref = FirebaseDatabase.getInstance().getReference("trip")
         button.setOnClickListener{
             //saveTrip()
@@ -293,7 +308,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
         latitudeMarker = mMap.cameraPosition.target.latitude
         longitudeMarker = mMap.cameraPosition.target.longitude
-
     }
 
 }
