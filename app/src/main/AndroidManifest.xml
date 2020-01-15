@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ActivityListContact"></activity>
+        <activity android:name=".HourFixActivity"></activity>
+        <activity android:name=".ActivityListContact" />
         <activity
             android:name=".ActivityLogin"
             android:label="@string/title_activity_login">
@@ -29,7 +30,7 @@
         <activity
             android:name=".ApiCall"
             android:label="@string/title_activity_api_call"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -38,10 +39,10 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
-            android:theme="@style/AppThemeNoActionBar"></activity>
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".ChoosePlace"
-            android:label="@string/title_activity_choose_place"></activity>
+            android:label="@string/title_activity_choose_place" />
     </application>
 
 </manifest>

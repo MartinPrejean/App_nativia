@@ -178,7 +178,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
     private lateinit var locationService: FusedLocationProviderClient
 
-    val locationCallback = object : LocationCallback() {
+    val  locationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult?) {
             /* val lastLocation = locationResult?.lastLocation
 

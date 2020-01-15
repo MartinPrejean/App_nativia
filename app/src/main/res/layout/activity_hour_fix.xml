@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HourFixActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:text="Fixez l'horaire du "
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="28dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="94dp"
+        android:text="rendez-vous"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        tools:layout_editor_absoluteY="28dp" />
+
+    <EditText
+        android:id="@+id/day_text"
+        android:layout_width="31dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="154dp"
+        android:background="@android:color/transparent"
+        android:text=". . ."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/month_text"
+        android:layout_width="31dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="154dp"
+        android:background="@android:color/transparent"
+        android:text=". . ."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/hour_text"
+        android:layout_width="31dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="201dp"
+        android:layout_marginTop="154dp"
+        android:background="@android:color/transparent"
+        android:text=". . ."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/min_text"
+        android:layout_width="31dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="253dp"
+        android:layout_marginTop="154dp"
+        android:background="@android:color/transparent"
+        android:text=". . ."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnConfirmRdv"
+        android:layout_width="327dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:text="Confirmez le rendez-vous"
+        android:background="@drawable/button"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
