@@ -48,6 +48,9 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     private lateinit var lastLocation: Location;
     private lateinit var locationRequest: LocationRequest;
 
+    var latitudeMarker: Double = 48.852053
+    var longitudeMarker: Double = 2.420395
+
     var tripList = mutableListOf<trip>()
     lateinit var ref: DatabaseReference
 
@@ -63,7 +66,10 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
 
-
+        var button: Button = findViewById(R.id.btnConfirmPosition)
+        button.setOnClickListener{
+            var id = sendLocalisation(latitudeMarker, longitudeMarker)
+        }
         /*var button: Button = findViewById(R.id.btnConfirmPosition)
         ref = FirebaseDatabase.getInstance().getReference("trip")
         button.setOnClickListener{
@@ -77,7 +83,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
         val interval = (now.time - date.time)/1000 // in seconds
 
-        
+
         ref.addValueEventListener(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 
@@ -98,11 +104,27 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
     }
 
+    fun sendLocalisation(latitude: Double, longitude: Double): String{
+        val localisation = "Paris 18"
+
+
+        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Localisation")
+
+        var locaId : String? = ref.push().key
+        var loca : Localisation = Localisation(locaId!!, latitude, longitude)
+
+        ref.child(locaId!!).setValue(loca).addOnCompleteListener {
+            Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
+        }
+
+        return locaId
+    }
+
     fun saveTrip(){
         val tripId : String? = ref.push().key
         val trip = trip(tripId!!, "Hypo", 8)
 
-        ref.child(tripId).setValue(trip).addOnCompleteListener {
+        ref.child(tripId!!).setValue(trip).addOnCompleteListener {
             Toast.makeText(applicationContext, "Saved success", Toast.LENGTH_LONG).show()
         }
     }
@@ -257,7 +279,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         Log.v("Onmove cancel","Onmove ");
     }
 
-    override fun onCameraIdle() {
+    override fun onCameraIdle(){
         Log.v("Onmove Idle","Onmove ");
 
         // hiding imageView
@@ -268,8 +290,8 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         val markerOptions = MarkerOptions().position(mMap.cameraPosition.target)
         mMap.addMarker(markerOptions)
 
-        val latitudeMarker = mMap.cameraPosition.target.latitude
-        val longitudeMarker = mMap.cameraPosition.target.longitude
+        latitudeMarker = mMap.cameraPosition.target.latitude
+        longitudeMarker = mMap.cameraPosition.target.longitude
 
     }
 
