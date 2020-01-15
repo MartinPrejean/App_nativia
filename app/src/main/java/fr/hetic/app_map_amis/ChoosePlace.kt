@@ -11,6 +11,9 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -23,7 +26,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_choose_place.*
+import kotlinx.android.synthetic.main.activity_trip.*
+import java.util.*
 
 
 class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
@@ -42,6 +48,8 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     private lateinit var lastLocation: Location;
     private lateinit var locationRequest: LocationRequest;
 
+    var tripList = mutableListOf<trip>()
+    lateinit var ref: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +62,49 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         mapFragment.getMapAsync(this)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+
+
+        var button: Button = findViewById(R.id.button)
+        ref = FirebaseDatabase.getInstance().getReference("trip")
+        button.setOnClickListener{
+            saveTrip()
+        }
+
+
+
+        val date = Date()
+        val now = Date()
+
+        val interval = (now.time - date.time)/1000 // in seconds
+
+        
+        ref.addValueEventListener(object: ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0!!.exists()){
+                    for(h in p0.children){
+                        val trip = h.getValue(trip::class.java)
+                        tripList.add(trip!!)
+                    }
+
+                    val adapter = ListAdapter(applicationContext, R.layout.activity_trip, tripList)
+                    listview.adapter = adapter
+                }
+            }
+        })
+
+    }
+
+    fun saveTrip(){
+        val tripId : String? = ref.push().key
+        val trip = trip(tripId!!, "Hypo", 8)
+
+        ref.child(tripId).setValue(trip).addOnCompleteListener {
+            Toast.makeText(applicationContext, "Saved success", Toast.LENGTH_LONG).show()
+        }
     }
 
 
