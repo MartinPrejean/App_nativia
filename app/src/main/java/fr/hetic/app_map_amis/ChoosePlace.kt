@@ -64,7 +64,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
             if(ContextCompat.checkSelfPermission(
                     this.getApplicationContext(),
-                    android.Manifest.permission.ACCESS_FINE_LOCATION
+                    Manifest.permission.ACCESS_FINE_LOCATION
                 )
                 == PackageManager.PERMISSION_GRANTED
             ) {
@@ -73,7 +73,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
             } else {
                 ActivityCompat.requestPermissions(
                     this,
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
                 );
             }
@@ -174,6 +174,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
             }
         }
     }
+
     @SuppressLint("MissingSuperCall")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
@@ -187,8 +188,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
             }
         }
     }
-
-
 
 
     override fun onCameraMoveStarted(p0: Int) {
@@ -217,6 +216,9 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         // and place it on the current map camera position
         val markerOptions = MarkerOptions().position(mMap.cameraPosition.target)
         mMap.addMarker(markerOptions)
+
+        val latitudeMarker = mMap.cameraPosition.target.latitude
+        val longitudeMarker = mMap.cameraPosition.target.longitude
 
     }
 
