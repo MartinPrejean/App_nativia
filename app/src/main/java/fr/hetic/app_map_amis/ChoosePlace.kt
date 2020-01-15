@@ -62,13 +62,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         mapFragment.getMapAsync(this)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        /*
-        btnConfirmPosition.setOnClickListener {
-            val intent = Intent(this, ApiCall::class.java)
-            // start your next activity
-            startActivity(intent)
-        }
-         */
+
 
         /*
         val simpleDateFormat = SimpleDateFormat("yyyyMMdd'T'HHmmss")
@@ -82,6 +76,8 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         var button: Button = findViewById(R.id.btnConfirmPosition)
         button.setOnClickListener{
             var id = sendLocalisation(latitudeMarker, longitudeMarker)
+            val intent = Intent(this, ActivityListContact::class.java)
+            startActivity(intent)
         }
 
         /*
