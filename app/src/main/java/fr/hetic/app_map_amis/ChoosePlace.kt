@@ -48,9 +48,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     var latitudeMarker: Double = 48.852053
     var longitudeMarker: Double = 2.420395
 
-    var tripList = mutableListOf<trip>()
-    lateinit var ref: DatabaseReference
-
     companion object{
         const val USER = "user"
     }

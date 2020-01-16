@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.hetic.app_map_amis.R
-import fr.hetic.app_map_amis.adapter.ContactRecyclerAdapter
+import fr.hetic.app_map_amis.adapter.ContactGroupRecyclerAdapter
 import fr.hetic.app_map_amis.data.ContactList
 import kotlinx.android.synthetic.main.fragment_custom.*
 
@@ -47,12 +47,12 @@ class ListFragment : Fragment() {
         // ex : ajout des onClickListener
     }
 
-    private lateinit var contactAdapter: ContactRecyclerAdapter
+    private lateinit var contactAdapter: ContactGroupRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        contactAdapter = ContactRecyclerAdapter()
+        contactAdapter = ContactGroupRecyclerAdapter()
         addDataSet()
     }
 

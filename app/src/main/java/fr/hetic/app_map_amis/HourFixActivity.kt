@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_hour_fix.*
 
+
 class HourFixActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +39,7 @@ class HourFixActivity : AppCompatActivity() {
         val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference()
 
         //locaId = id group
-        /*var locaId : String? = ref.push().key
+        var locaId : String? = ref.push().key
         var loca : Localisation = Localisation(locaId!!, latitude, longitude)
 
         ref.child(locaId!!).setValue(loca).addOnCompleteListener {
@@ -48,5 +49,4 @@ class HourFixActivity : AppCompatActivity() {
         return locaId*/
     }
 
-         }
 }
