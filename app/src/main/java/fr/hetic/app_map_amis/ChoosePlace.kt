@@ -137,7 +137,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
     fun saveTrip(){
         val tripId : String? = ref.push().key
-        val trip = trip(tripId!!, "Hypo", 8)
+        val trip = trip(tripId!!, "Hypo")
 
         ref.child(tripId!!).setValue(trip).addOnCompleteListener {
             Toast.makeText(applicationContext, "Saved success", Toast.LENGTH_LONG).show()
