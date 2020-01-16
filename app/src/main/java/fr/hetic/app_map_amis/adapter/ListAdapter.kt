@@ -1,4 +1,4 @@
-package fr.hetic.app_map_amis
+package fr.hetic.app_map_amis.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import kotlinx.android.synthetic.*
-import java.text.FieldPosition
+import fr.hetic.app_map_amis.R
+import fr.hetic.app_map_amis.trip
 
 class ListAdapter(val mCtx: Context,val layoutResId: Int,val TripList: List<trip>) : ArrayAdapter<trip>(mCtx, layoutResId, TripList){
 
