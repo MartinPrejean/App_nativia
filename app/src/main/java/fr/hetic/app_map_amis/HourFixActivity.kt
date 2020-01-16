@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_hour_fix.*
+import kotlinx.android.synthetic.main.activity_list_contact.*
 
 
 class HourFixActivity : AppCompatActivity() {
@@ -15,38 +16,42 @@ class HourFixActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hour_fix)
+        lateinit var user: User
 
-        var button: Button = findViewById(R.id.btnConfirmPosition)
+
+        intent?.let{
+            user = intent.extras.getParcelable(ChoosePlace.USER) as User
+            textView4.text = user.toString()
+        }
+
+        var button: Button = findViewById(R.id.btnConfirmRdv)
         button.setOnClickListener{
-            sendTime()
+            sendTime(user)
             /*val intent = Intent(this, ActivityListContact::class.java)
             startActivity(intent)*/
         }
 
 
     }
-    fun sendTime(){
+    fun sendTime(user: User){
 
-        /*val day = day_text.text.toString()
+        val day = day_text.text.toString()
         val month = month_text.text.toString()
         val hour = hour_text.text.toString()
         val min = min_text.text.toString()
 
         val jour = day + " " + month
-        val time = hour + " " + min
+        val temps = hour + " " + min
 
 
-        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference()
+        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Trajet")
 
         //locaId = id group
-        var locaId : String? = ref.push().key
-        var loca : Localisation = Localisation(locaId!!, latitude, longitude)
+        var time: Time = Time(jour, temps)
 
-        ref.child(locaId!!).setValue(loca).addOnCompleteListener {
+        ref.child(user.toString()).setValue(time).addOnCompleteListener {
             Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
         }
-
-        return locaId*/
     }
 
 }

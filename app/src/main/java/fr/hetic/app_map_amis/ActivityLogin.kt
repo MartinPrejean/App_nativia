@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 
 class ActivityLogin : AppCompatActivity() {
@@ -28,6 +30,7 @@ class ActivityLogin : AppCompatActivity() {
 
         btn_login.setOnClickListener {
             save_user()
+            send_id()
             val intent = Intent(this, MapsActivity::class.java)
             startActivity(intent)
         }
@@ -81,5 +84,18 @@ class ActivityLogin : AppCompatActivity() {
     fun updateUI(currentUser: FirebaseUser?)
     {
 
+    }
+
+    fun send_id()
+    {
+        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("User")
+
+        var id = id_login.text.toString().trim()
+        var user = user_login.text.toString().trim()
+        var profile = Profile(id, user)
+
+        ref.child(user).setValue(profile).addOnCompleteListener {
+            Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
+        }
     }
 }

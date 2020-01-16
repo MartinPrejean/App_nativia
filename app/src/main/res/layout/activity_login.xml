@@ -45,7 +45,6 @@
         android:inputType="textEmailAddress"
         android:paddingRight="20dp"
         android:selectAllOnFocus="true"
-        android:textColor="@color/colorPrimary"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

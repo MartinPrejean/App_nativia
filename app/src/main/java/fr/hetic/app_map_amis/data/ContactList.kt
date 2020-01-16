@@ -9,38 +9,45 @@ class ContactList {
             list.add(
                 Contact(
                     "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
-                    "Sabrina"
+                    "Capucine",
+                    "capugc@hotmail.fr"
+
                 )
             )
             list.add(
                 Contact(
                     "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
-                    "Nina"
+                    "Martin",
+                    "martin.prejean@hetic.net"
                 )
             )
 
             list.add(
                 Contact(
                     "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
-                    "Justin"
+                    "Louis",
+                    "0617945724"
                 )
             )
             list.add(
                 Contact(
                     "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
-                    "John"
+                    "Diego",
+                    "0634437187"
                 )
             )
             list.add(
                 Contact(
                     "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
-                    "Martin"
+                    "Martine",
+                    "martine@gmail.fr"
                 )
             )
             list.add(
                 Contact(
                     "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
-                    "Téo"
+                    "Quentin",
+                    "0748559864"
                 )
             )
 

@@ -1,61 +1,61 @@
 package fr.hetic.app_map_amis
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.widget.Button
 import android.widget.ListAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_hour_fix.*
+import kotlinx.android.synthetic.main.activity_hour_fix.textView4
 import kotlinx.android.synthetic.main.activity_list_contact.*
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_trip.*
+import kotlinx.android.synthetic.main.contact_group_layout.*
 
 class ActivityListContact : AppCompatActivity() {
 
     var tripList = mutableListOf<Trip>()
     lateinit var ref: DatabaseReference
+    lateinit var user: User
+
+    companion object{
+        const val USER = "user"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_contact)
 
         intent?.let{
-            val user = intent.extras.getParcelable(ChoosePlace.USER) as User
-            textView3.text = user.toString()
+            user = intent.extras.getParcelable(ChoosePlace.USER) as User
         }
 
-        /*var button: Button = findViewById(R.id.btnConfirmPosition)
-        ref = FirebaseDatabase.getInstance().getReference("trip")
-        button.setOnClickListener{
-            saveTrip()
+        /*checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
+
+        }*/
+
+        btnSendFinal.setOnClickListener{
+            val intent = Intent(this, HourFixActivity::class.java)
+            intent.putExtra(ChoosePlace.USER, user)
+            startActivity(intent)
         }
-
-
-        ref.addValueEventListener(object: ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
-            override fun onDataChange(p0: DataSnapshot) {
-                if(p0!!.exists()){
-                    for(h in p0.children){
-                        val trip = h.getValue(Trip::class.java)
-                        tripList.add(trip!!)
-                    }
-
-                    var adapter = ListAdapter(applicationContext, R.layout.activity_trip, tripList)
-                    listview.adapter = adapter
-                }
-            }
-        })*/
 
     }
+        fun sendLocalisation(latitude: Double, longitude: Double): String{
 
-    fun saveTrip(){
-        val tripId : String? = ref.push().key
-        val trip = Trip(tripId!!, "Arthur")
+            val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Trajet")
 
-        ref.child(tripId!!).setValue(trip).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Saved success", Toast.LENGTH_LONG).show()
+            //locaId = id group
+            var locaId : String? = ref.push().key
+            var loca : Localisation = Localisation(locaId!!, latitude, longitude)
+
+            ref.child(locaId).setValue(loca).addOnCompleteListener {
+                Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
+            }
+
+            return locaId
         }
-    }
 }

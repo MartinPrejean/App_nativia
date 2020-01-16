@@ -77,8 +77,8 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         button.setOnClickListener{
             var id = sendLocalisation(latitudeMarker, longitudeMarker)
             val user: User = User(id)
-            intent.putExtra(USER, user)
             val intent = Intent(this, ActivityListContact::class.java)
+            intent.putExtra(USER, user)
             startActivity(intent)
         }
 
@@ -119,7 +119,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
     fun sendLocalisation(latitude: Double, longitude: Double): String{
 
-        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Localisation")
+        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Trajet")
 
         //locaId = id group
         var locaId : String? = ref.push().key
