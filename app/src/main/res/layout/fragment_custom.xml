@@ -23,6 +23,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btnMenuRdv"
+        android:layout_width="159.5dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF"
+        android:text="Vos rendez-vous"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStartSearchPlace" />
+
+    <Button
+        android:id="@+id/btnMenuFavoris"
+        android:layout_width="159.5dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttoninverse"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/colorPrimary"
+        android:text="Favoris"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStartSearchPlace" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contactRecyclerView"
         android:layout_width="0dp"
