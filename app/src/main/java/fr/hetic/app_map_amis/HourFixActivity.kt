@@ -1,14 +1,13 @@
 package fr.hetic.app_map_amis
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_hour_fix.*
-import kotlinx.android.synthetic.main.activity_list_contact.*
 
 
 class HourFixActivity : AppCompatActivity() {
@@ -27,8 +26,8 @@ class HourFixActivity : AppCompatActivity() {
         var button: Button = findViewById(R.id.btnConfirmRdv)
         button.setOnClickListener{
             sendTime(user)
-            /*val intent = Intent(this, ActivityListContact::class.java)
-            startActivity(intent)*/
+            val intent = Intent(this, GroupTrip::class.java)
+            startActivity(intent)
         }
 
 

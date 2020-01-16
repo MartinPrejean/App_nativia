@@ -35,8 +35,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     GoogleMap.OnCameraMoveCanceledListener,
     GoogleMap.OnCameraIdleListener{
 
-
-
     private val REQUEST_CHECK_SETTINGS: Int=101;
     var PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=101;
 
@@ -45,8 +43,8 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     private lateinit var lastLocation: Location;
     private lateinit var locationRequest: LocationRequest;
 
-    var latitudeMarker: Double = 48.852053
-    var longitudeMarker: Double = 2.420395
+    private var latitudeMarker: Double = 0.0
+    private var longitudeMarker: Double = 0.0
 
     companion object{
         const val USER = "user"
@@ -295,6 +293,10 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
         latitudeMarker = mMap.cameraPosition.target.latitude
         longitudeMarker = mMap.cameraPosition.target.longitude
+
+        println(latitudeMarker)
+        println(longitudeMarker)
+
     }
 
 }
