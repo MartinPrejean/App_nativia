@@ -8,14 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Ici"
+        android:hint="@string/hint_text_trip"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:text="@string/text_trip" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="onClick"/>
+        android:text="@string/button_trip"/>
 
     <ListView
         android:id="@+id/listview"

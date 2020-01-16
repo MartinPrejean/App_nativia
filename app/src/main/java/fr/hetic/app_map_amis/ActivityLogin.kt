@@ -7,11 +7,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import fr.hetic.app_map_amis.network.JourneyService
+import fr.hetic.app_map_amis.network.response.JourneyResult
 import kotlinx.android.synthetic.main.activity_login.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ActivityLogin : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var journeyService: JourneyService
 
     override fun onStart() {
         super.onStart()
@@ -31,6 +39,26 @@ class ActivityLogin : AppCompatActivity() {
             val intent = Intent(this, MapsActivity::class.java)
             startActivity(intent)
         }
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://api.navitia.io/v1/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val navitiaApiKey = "0dbdc129-2b4f-4827-b826-9379293b5869"
+
+        journeyService = retrofit.create(JourneyService::class.java)
+
+        journeyService.getJourney(navitiaApiKey).enqueue(object: Callback<JourneyResult> {
+            override fun onFailure(call: Call<JourneyResult>, t: Throwable) {
+                t.toString()
+            }
+
+            override fun onResponse(call: Call<JourneyResult>, response: Response<JourneyResult>) {
+                response.body()
+            }
+
+        })
     }
 
         private fun save_user(){
