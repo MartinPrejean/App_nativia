@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import fr.hetic.app_map_amis.R
 import fr.hetic.app_map_amis.data.Localisation
 import fr.hetic.app_map_amis.network.JourneyService
+import fr.hetic.app_map_amis.network.response.Durations
 import fr.hetic.app_map_amis.network.response.JourneyResult
+import kotlinx.android.synthetic.main.content_api_call.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,6 +19,8 @@ class ApiCall : AppCompatActivity() {
 
     private lateinit var journeyService: JourneyService
 
+    private lateinit var durations: Durations
+
     private lateinit var lastLocation: Location
     private lateinit var markerLocation: Localisation
 
@@ -24,6 +28,8 @@ class ApiCall : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.content_api_call)
+
+        durations = Durations(0,0,0,0,0,0)
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.navitia.io/v1/")
@@ -64,6 +70,7 @@ class ApiCall : AppCompatActivity() {
 
         })
 
-        // textApiDuration.text = Durations.total
+        textApiDuration.text = durations.total.toString()
+
     }
 }

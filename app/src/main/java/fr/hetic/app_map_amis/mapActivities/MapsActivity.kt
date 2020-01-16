@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_custom.*
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+    private lateinit var lastLocation: Location;
     private val REQUEST_CHECK_SETTINGS: Int=101;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,7 +104,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    private lateinit var lastLocation: Location;
     var PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=101
 
     override fun onMapReady(googleMap: GoogleMap) {
