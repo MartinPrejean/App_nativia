@@ -3,11 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="fr.hetic.app_map_amis">
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -28,13 +23,12 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".GroupTrip"
+            android:name=".mapActivities.GroupTrip"
             android:label="@string/title_activity_group_trip"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
 
-        <activity android:name=".Trip" />
+        <activity android:name=".data.Trip" />
 
         <activity android:name=".HourFixActivity" />
 
@@ -42,8 +36,15 @@
             android:name=".ActivityListContact"
             android:label="Qui peut vous rejoindre ?" />
         <activity
-            android:name=".ActivityLogin"
+            android:name=".login.ActivityLogin"
             android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+        <activity
+            android:name=".api.ApiCall"
+            android:label="@string/title_activity_api_call"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,24 +52,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ApiCall"
-            android:label="@string/title_activity_api_call"
-            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".mapActivities.MapsActivity"
             android:label="@string/title_activity_maps"
             android:theme="@style/AppThemeNoActionBar" />
 
         <activity
-            android:name=".ChoosePlace"
+            android:name=".mapActivities.ChoosePlace"
             android:label="@string/title_activity_maps"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:theme="@style/AppThemeNoActionBar">
+
+        </activity>
+
     </application>
 
 </manifest>

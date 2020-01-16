@@ -24,6 +24,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".MapsActivity" />
+        tools:context=".mapActivities.MapsActivity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

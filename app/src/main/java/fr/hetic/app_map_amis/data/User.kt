@@ -1,4 +1,4 @@
-package fr.hetic.app_map_amis
+package fr.hetic.app_map_amis.data
 
 import android.os.Parcel
 import android.os.Parcelable

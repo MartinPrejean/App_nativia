@@ -1,54 +1,55 @@
 package fr.hetic.app_map_amis.network.response
 
-class Durations(
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+
+// JSON Classes
+@Parcelize data class Durations(
     val taxi:Int,
     val walking:Int,
     val car:Int,
     val ridesharing:Int,
     val bike:Int,
     val total:Int
-) {}
+) : Parcelable {}
 
-/*
-
-class Sections(
+@Parcelize data class Sections(
     val from:From,
     val to:To
-) {}
+) : Parcelable {}
 
-class To(
-    val address:StopPointTo
-) {}
+@Parcelize data class To(
+    val stop_point:StopPointTo
+) : Parcelable {}
 
-class StopPointTo(
+@Parcelize data class StopPointTo(
     val coord:CoordTo
-) {}
+) : Parcelable {}
 
-class CoordTo(
+@Parcelize data class CoordTo(
     val lat:Double,
-    val lng:Double
-) {}
+    val lon:Double
+) : Parcelable {}
 
-class From(
+@Parcelize data class From(
     val address:AddressFrom
-) {}
+) : Parcelable {}
 
-class AddressFrom(
+@Parcelize data class AddressFrom(
     val coord:CoordFrom
-) {}
+) : Parcelable {}
 
-class CoordFrom(
+@Parcelize data class CoordFrom(
     val lat:Double,
-    val lng:Double
-) {}
+    val lon:Double
+) : Parcelable {}
 
+@Parcelize data class Journey(
+    val durations:Durations,
+    val sections:List<Sections>
+) : Parcelable {}
 
- */
-class Journey(
-    val durations:Durations
-    // val sections:Sections
-) {}
-
-data class JourneyResult(
+@Parcelize data class JourneyResult(
     val journeys:List<Journey>
-) {}
+) : Parcelable {}

@@ -6,6 +6,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import fr.hetic.app_map_amis.data.Localisation
+import fr.hetic.app_map_amis.data.Trip
+import fr.hetic.app_map_amis.data.User
+import fr.hetic.app_map_amis.mapActivities.ChoosePlace
 import kotlinx.android.synthetic.main.activity_list_contact.*
 
 class ActivityListContact : AppCompatActivity() {
@@ -43,7 +47,12 @@ class ActivityListContact : AppCompatActivity() {
 
             //locaId = id group
             var locaId : String? = ref.push().key
-            var loca : Localisation = Localisation(locaId!!, latitude, longitude)
+            var loca : Localisation =
+                Localisation(
+                    locaId!!,
+                    latitude,
+                    longitude
+                )
 
             ref.child(locaId).setValue(loca).addOnCompleteListener {
                 Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()

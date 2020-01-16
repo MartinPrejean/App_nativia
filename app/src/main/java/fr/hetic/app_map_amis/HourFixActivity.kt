@@ -7,6 +7,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import fr.hetic.app_map_amis.data.Time
+import fr.hetic.app_map_amis.data.User
+import fr.hetic.app_map_amis.mapActivities.ChoosePlace
+import fr.hetic.app_map_amis.mapActivities.GroupTrip
 import kotlinx.android.synthetic.main.activity_hour_fix.*
 
 
@@ -46,7 +50,8 @@ class HourFixActivity : AppCompatActivity() {
         val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Trajet")
 
         //locaId = id group
-        var time: Time = Time(jour, temps)
+        var time: Time =
+            Time(jour, temps)
 
         ref.child(user.toString()).setValue(time).addOnCompleteListener {
             Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()

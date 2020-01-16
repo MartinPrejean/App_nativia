@@ -1,4 +1,4 @@
-package fr.hetic.app_map_amis
+package fr.hetic.app_map_amis.mapActivities
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -26,7 +26,12 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import fr.hetic.app_map_amis.ActivityListContact
+import fr.hetic.app_map_amis.R
+import fr.hetic.app_map_amis.data.Localisation
+import fr.hetic.app_map_amis.data.User
 import kotlinx.android.synthetic.main.activity_choose_place.*
+import kotlin.properties.Delegates
 
 
 class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
@@ -43,8 +48,8 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     private lateinit var lastLocation: Location;
     private lateinit var locationRequest: LocationRequest;
 
-    private var latitudeMarker: Double = 0.0
-    private var longitudeMarker: Double = 0.0
+    private var latitudeMarker by Delegates.notNull<Double>()
+    private var longitudeMarker by Delegates.notNull<Double>()
 
     companion object{
         const val USER = "user"
@@ -74,9 +79,12 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         var button: Button = findViewById(R.id.btnConfirmPosition)
         button.setOnClickListener{
             var id = sendLocalisation(latitudeMarker, longitudeMarker)
-            val user: User = User(id)
+            val user: User =
+                User(id)
             val intent = Intent(this, ActivityListContact::class.java)
             intent.putExtra(USER, user)
+            // intent.putExtra(LOCALISATION, latitudeMarker)
+            // intent.putExtra(LOCALISATION, longitudeMarker)
             startActivity(intent)
         }
 
@@ -121,7 +129,12 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
         //locaId = id group
         var locaId : String? = ref.push().key
-        var loca : Localisation = Localisation(locaId!!, latitude, longitude)
+        var loca : Localisation =
+            Localisation(
+                locaId!!,
+                latitude,
+                longitude
+            )
 
         ref.child(locaId!!).setValue(loca).addOnCompleteListener {
             Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
@@ -129,7 +142,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
         return locaId
     }
-
 
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -167,15 +179,9 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
     private lateinit var locationService: FusedLocationProviderClient
 
-    val  locationCallback = object : LocationCallback() {
+    val locationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult?) {
-            /* val lastLocation = locationResult?.lastLocation
 
-            if(lastLocation is Location) {
-                val text = "${locationTextView.text} \n" +
-                        "New Position = latitude: ${lastLocation.latitude}, longitude: ${lastLocation.longitude}"
-                locationTextView.text = text
-            }*/
         }
 
     }
@@ -191,13 +197,11 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
                 && grantResults[0]==PackageManager.PERMISSION_GRANTED) {
 
                 // L'utilisateur a accepté la permission pour la géolocalisation
-
                 val locationRequest = LocationRequest()
                 locationRequest.fastestInterval = 5000
                 locationRequest.interval = 10000
                 locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
-                locationService.requestLocationUpdates(locationRequest, locationCallback, null)
             }
         }
     }
@@ -263,7 +267,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         }
     }
 
-
     override fun onCameraMoveStarted(p0: Int) {
         Log.v("Onmove start","Onmove "+p0)
     }
@@ -294,8 +297,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         latitudeMarker = mMap.cameraPosition.target.latitude
         longitudeMarker = mMap.cameraPosition.target.longitude
 
-        println(latitudeMarker)
-        println(longitudeMarker)
 
     }
 

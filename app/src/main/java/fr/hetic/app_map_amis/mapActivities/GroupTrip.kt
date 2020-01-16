@@ -1,10 +1,11 @@
-package fr.hetic.app_map_amis
+package fr.hetic.app_map_amis.mapActivities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import fr.hetic.app_map_amis.R
 
 class GroupTrip : AppCompatActivity(), OnMapReadyCallback {
 

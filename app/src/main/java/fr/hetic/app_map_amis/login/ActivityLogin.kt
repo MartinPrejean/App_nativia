@@ -1,4 +1,4 @@
-package fr.hetic.app_map_amis
+package fr.hetic.app_map_amis.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,16 +7,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import fr.hetic.app_map_amis.network.JourneyService
-import fr.hetic.app_map_amis.network.response.JourneyResult
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import fr.hetic.app_map_amis.data.Profile
+import fr.hetic.app_map_amis.R
+import fr.hetic.app_map_amis.mapActivities.MapsActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class ActivityLogin : AppCompatActivity() {
 

@@ -10,85 +10,81 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:text="Fixez l'horaire du "
+        android:text="@string/choose_hour"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="28dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="94dp"
-        android:text="rendez-vous"
+        android:text="@string/rdv_hour"
         android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/min_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        tools:layout_editor_absoluteY="28dp" />
+        app:layout_constraintStart_toEndOf="@+id/month_text"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/day_text"
         android:layout_width="31dp"
         android:layout_height="26dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="154dp"
+        android:layout_marginStart="32dp"
         android:background="@android:color/transparent"
-        android:hint=". . ."
-        android:textAlignment="center"
+        android:hint="@string/hint_text_trip"
         android:inputType="date"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/month_text"
         android:layout_width="31dp"
         android:layout_height="26dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="154dp"
+        android:layout_marginStart="8dp"
         android:background="@android:color/transparent"
-        android:hint=". . ."
+        android:hint="@string/hint_hour"
         android:inputType="date"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        tools:layout_editor_absoluteY="154dp" />
 
     <EditText
         android:id="@+id/hour_text"
         android:layout_width="31dp"
         android:layout_height="26dp"
-        android:layout_marginStart="201dp"
-        android:layout_marginTop="154dp"
+        android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
-        android:hint=". . ."
+        android:hint="@string/hint_hour"
         android:inputType="date"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        tools:layout_editor_absoluteY="154dp" />
 
     <EditText
         android:id="@+id/min_text"
         android:layout_width="31dp"
         android:layout_height="26dp"
-        android:layout_marginStart="253dp"
-        android:layout_marginTop="154dp"
+        android:layout_marginEnd="32dp"
         android:background="@android:color/transparent"
+        android:hint="@string/hint_hour"
         android:inputType="date"
-        android:hint=". . ."
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnConfirmRdv"
         android:layout_width="327dp"
         android:layout_height="50dp"
         android:layout_marginBottom="24dp"
-        android:text="Confirmez le rendez-vous"
+        android:text="@string/confirm_rdv_hour"
         android:background="@drawable/button"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,25 +93,23 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="31dp"
+        android:layout_width="45dp"
         android:layout_height="26dp"
-        android:layout_marginStart="119dp"
-        android:layout_marginTop="154dp"
-        android:hint=" / "
-        android:textSize="50px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="8dp"
+        android:hint="@string/between_hour"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@+id/month_text"
+        app:layout_constraintStart_toEndOf="@+id/day_text" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="44dp"
+        android:layout_width="45dp"
         android:layout_height="26dp"
-        android:layout_marginStart="231dp"
-        android:layout_marginTop="154dp"
+        android:layout_marginEnd="8dp"
         android:text="h"
-        android:textSize="50px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="50sp"
+        app:layout_constraintEnd_toStartOf="@+id/min_text"
+        tools:layout_editor_absoluteY="154dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import fr.hetic.app_map_amis.R
-import fr.hetic.app_map_amis.Trip
+import fr.hetic.app_map_amis.data.Trip
 
 class ListAdapter(val mCtx: Context,val layoutResId: Int,val TripList: List<Trip>) : ArrayAdapter<Trip>(mCtx, layoutResId, TripList){
 

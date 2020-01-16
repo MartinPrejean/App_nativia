@@ -43,7 +43,7 @@ class ContactRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     ): RecyclerView.ViewHolder(itemView){
 
         val contact_image = itemView.rowContactImageView
-        val contact_username = itemView.textAPI
+        val contact_username = itemView.textApiDuration
 
         fun bind(Contact: Contact){
 

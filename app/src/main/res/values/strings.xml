@@ -7,7 +7,7 @@
 
     // Map
     <string name="title_activity_maps">Map</string>
-    <string name="confirmPin">Choisir ce point de rencontre</string>
+    <string name="confirmPin">Choisir un point de rencontre</string>
     <string name="title_activity_api_call">ApiCall</string>
 
     // LoginActivity
@@ -17,17 +17,30 @@
     <string name="id_login">Mail ou tel</string>
     <string name="user_login">Pseudo</string>
 
-    // Login Message
+    // LoginMessage
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be more than 5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="welcome">"Welcome !"</string>
 
+    // HourFixActivity
+    <string name="choose_hour">"Fixez l'horaire du "</string>
+    <string name="hint_hour">". . ."</string>
+    <string name="rdv_hour">"Rendez-vous"</string>
+    <string name="confirm_rdv_hour">"Confirmez le rendez-vous"</string>
+    <string name="between_hour">" / "</string>
+
     // Trip
-    <string name="hint_text_trip">"Ici"</string>
-    <string name="text_trip">"Name"</string>
-    <string name="button_trip">"Cliquer"</string>
+    <string name="hint_text_trip">Ici</string>
+    <string name="text_trip">Name</string>
+    <string name="button_trip">Cliquer</string>
     <string name="title_activity_group_trip">Map</string>
+    <string name="confirm_participants">Confirmer le choix des participants</string>
+
+    // Fragment Choose Place
+    <string name="where_to_go">On va où ?</string>
+    <string name="rendez_vous_list">Vos rendez-vous</string>
+    <string name="favorites">Favoris</string>
 
 
 </resources>

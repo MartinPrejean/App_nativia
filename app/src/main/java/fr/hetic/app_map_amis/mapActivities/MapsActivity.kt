@@ -1,4 +1,4 @@
-package fr.hetic.app_map_amis
+package fr.hetic.app_map_amis.mapActivities
 
 import android.Manifest
 import android.content.Intent
@@ -20,6 +20,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import fr.hetic.app_map_amis.R
 import kotlinx.android.synthetic.main.fragment_custom.*
 
 
@@ -51,6 +52,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient;
+
 
     fun fetchCurrentLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
