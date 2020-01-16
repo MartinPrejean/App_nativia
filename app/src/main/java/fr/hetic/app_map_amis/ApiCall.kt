@@ -14,6 +14,9 @@ class ApiCall : AppCompatActivity() {
 
     private lateinit var journeyService: JourneyService
 
+    var latitudeMarker: Double = 0.0
+    var longitudeMarker: Double = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,7 +31,7 @@ class ApiCall : AppCompatActivity() {
 
         journeyService = retrofit.create(JourneyService::class.java)
 
-        journeyService.getJourney(navitiaApiKey).enqueue(object:Callback<JourneyResult> {
+        journeyService.getJourney(longitudeMarker, latitudeMarker, longitudeMarker, latitudeMarker,navitiaApiKey).enqueue(object:Callback<JourneyResult> {
             override fun onFailure(call: Call<JourneyResult>, t: Throwable) {
                 t.toString()
             }
