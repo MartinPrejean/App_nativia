@@ -63,7 +63,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
 
-
         /*
         val simpleDateFormat = SimpleDateFormat("yyyyMMdd'T'HHmmss")
         val date = simpleDateFormat.parse("20200115T143726")
