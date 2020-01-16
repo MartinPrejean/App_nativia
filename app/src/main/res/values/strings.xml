@@ -27,6 +27,7 @@
     <string name="hint_text_trip">"Ici"</string>
     <string name="text_trip">"Name"</string>
     <string name="button_trip">"Cliquer"</string>
+    <string name="title_activity_group_trip">Map</string>
 
 
 </resources>

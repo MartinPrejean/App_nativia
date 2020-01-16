@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="fr.hetic.app_map_amis">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,13 +17,29 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Trip"></activity>
-        <activity android:name=".HourFixActivity"></activity>
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".GroupTrip"
+            android:label="@string/title_activity_group_trip"></activity>
+        <activity android:name=".Trip" />
+        <activity android:name=".HourFixActivity" />
         <activity
             android:name=".ActivityListContact"
             android:label="Qui peut vous rejoindre ?" />
@@ -38,9 +59,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-        <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
@@ -51,8 +69,7 @@
         <activity
             android:name=".ChoosePlace"
             android:label="@string/title_activity_maps"
-            android:theme="@style/AppThemeNoActionBar"/>
-
+            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>
