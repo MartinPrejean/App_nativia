@@ -119,8 +119,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     }
 
     fun sendLocalisation(latitude: Double, longitude: Double): String{
-        val localisation = "Paris 18"
-
 
         val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Localisation")
 
@@ -133,15 +131,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         }
 
         return locaId
-    }
-
-    fun saveTrip(){
-        val tripId : String? = ref.push().key
-        val trip = trip(tripId!!, "Hypo")
-
-        ref.child(tripId!!).setValue(trip).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Saved success", Toast.LENGTH_LONG).show()
-        }
     }
 
 

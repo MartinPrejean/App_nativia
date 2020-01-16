@@ -19,8 +19,8 @@ class HourFixActivity : AppCompatActivity() {
         var button: Button = findViewById(R.id.btnConfirmPosition)
         button.setOnClickListener{
             sendTime()
-            val intent = Intent(this, ActivityListContact::class.java)
-            startActivity(intent)
+            /*val intent = Intent(this, ActivityListContact::class.java)
+            startActivity(intent)*/
         }
 
 
