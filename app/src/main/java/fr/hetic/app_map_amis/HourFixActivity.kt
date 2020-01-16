@@ -25,25 +25,28 @@ class HourFixActivity : AppCompatActivity() {
 
     }
     fun sendTime(){
-        val dataDay = day_text.text.toString()
-        val month: String = month_text.text.toString()
+
+        /*val day = day_text.text.toString()
+        val month = month_text.text.toString()
         val hour = hour_text.text.toString()
         val min = min_text.text.toString()
 
-        val day = dataDay + month
-        val time = hour + min
+        val jour = day + " " + month
+        val time = hour + " " + min
 
 
-        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Localisation")
+        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference()
 
         //locaId = id group
-        var locaId : String? = ref.push().key
+        /*var locaId : String? = ref.push().key
         var loca : Localisation = Localisation(locaId!!, latitude, longitude)
 
         ref.child(locaId!!).setValue(loca).addOnCompleteListener {
             Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
         }
 
-        return locaId
+        return locaId*/
     }
+
+         }
 }

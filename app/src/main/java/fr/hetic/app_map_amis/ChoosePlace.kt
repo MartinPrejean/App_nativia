@@ -51,6 +51,10 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     var tripList = mutableListOf<trip>()
     lateinit var ref: DatabaseReference
 
+    companion object{
+        const val USER = "user"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_place)
@@ -76,6 +80,8 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         var button: Button = findViewById(R.id.btnConfirmPosition)
         button.setOnClickListener{
             var id = sendLocalisation(latitudeMarker, longitudeMarker)
+            val user: User = User(id)
+            intent.putExtra(USER, user)
             val intent = Intent(this, ActivityListContact::class.java)
             startActivity(intent)
         }
