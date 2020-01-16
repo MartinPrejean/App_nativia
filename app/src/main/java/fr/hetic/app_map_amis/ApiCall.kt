@@ -1,7 +1,9 @@
 package fr.hetic.app_map_amis
 
 import android.os.Bundle
+import android.widget.ListAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.*
 import fr.hetic.app_map_amis.network.JourneyService
 import fr.hetic.app_map_amis.network.response.JourneyResult
 import retrofit2.Call
@@ -19,8 +21,8 @@ class ApiCall : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.content_api_call)
+
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.navitia.io/v1/")
@@ -39,7 +41,6 @@ class ApiCall : AppCompatActivity() {
             override fun onResponse(call: Call<JourneyResult>, response: Response<JourneyResult>) {
                 response.body()
             }
-
         })
     }
 }

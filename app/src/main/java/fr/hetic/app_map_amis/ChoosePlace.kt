@@ -296,7 +296,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
 
         println(latitudeMarker)
         println(longitudeMarker)
-
     }
 
 }
