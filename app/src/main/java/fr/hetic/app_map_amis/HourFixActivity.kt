@@ -24,7 +24,6 @@ class HourFixActivity : AppCompatActivity() {
 
         intent?.let{
             user = intent.extras.getParcelable(ChoosePlace.USER) as User
-            textView4.text = user.toString()
         }
 
         var button: Button = findViewById(R.id.btnConfirmRdv)

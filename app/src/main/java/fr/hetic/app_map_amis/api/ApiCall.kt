@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import fr.hetic.app_map_amis.R
 import fr.hetic.app_map_amis.data.Localisation
 import fr.hetic.app_map_amis.network.JourneyService
-import fr.hetic.app_map_amis.network.response.Durations
 import fr.hetic.app_map_amis.network.response.JourneyResult
-import kotlinx.android.synthetic.main.content_api_call.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -66,6 +64,6 @@ class ApiCall : AppCompatActivity() {
 
         })
 
-        textApiDuration.text = Durations.total
+        // textApiDuration.text = Durations.total
     }
 }

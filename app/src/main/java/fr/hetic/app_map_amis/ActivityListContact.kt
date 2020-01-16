@@ -31,7 +31,6 @@ class ActivityListContact : AppCompatActivity() {
         }
 
         /*checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
-
         }*/
 
         btnSendFinal.setOnClickListener{

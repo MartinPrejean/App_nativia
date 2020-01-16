@@ -46,6 +46,7 @@ class ActivityLogin : AppCompatActivity() {
                 return
 
             }
+            //Vérification format addresse mail
             /*if(!Patterns.EMAIL_ADDRESS.matcher(id_login.text.toString().matches())){
                 id_login.error = "Please enter valid email ou phone number"
                 id_login.requestFocus()
@@ -56,7 +57,7 @@ class ActivityLogin : AppCompatActivity() {
                 user_login.requestFocus()
                 return
             }
-
+            //Vérification format téléphone
             /*PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 id_login, // Phone number to verify
                 60, // Timeout duration

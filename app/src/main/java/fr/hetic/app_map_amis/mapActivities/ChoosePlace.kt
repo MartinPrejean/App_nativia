@@ -297,7 +297,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         latitudeMarker = mMap.cameraPosition.target.latitude
         longitudeMarker = mMap.cameraPosition.target.longitude
 
-
     }
 
 }
