@@ -9,6 +9,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import fr.hetic.app_map_amis.network.JourneyService
 import fr.hetic.app_map_amis.network.response.JourneyResult
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,7 +21,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ActivityLogin : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var journeyService: JourneyService
 
     override fun onStart() {
         super.onStart()
@@ -36,29 +37,10 @@ class ActivityLogin : AppCompatActivity() {
 
         btn_login.setOnClickListener {
             save_user()
+            send_id()
             val intent = Intent(this, MapsActivity::class.java)
             startActivity(intent)
         }
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.navitia.io/v1/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val navitiaApiKey = "0dbdc129-2b4f-4827-b826-9379293b5869"
-
-        journeyService = retrofit.create(JourneyService::class.java)
-
-        journeyService.getJourney(navitiaApiKey).enqueue(object: Callback<JourneyResult> {
-            override fun onFailure(call: Call<JourneyResult>, t: Throwable) {
-                t.toString()
-            }
-
-            override fun onResponse(call: Call<JourneyResult>, response: Response<JourneyResult>) {
-                response.body()
-            }
-
-        })
     }
 
         private fun save_user(){
@@ -109,5 +91,18 @@ class ActivityLogin : AppCompatActivity() {
     fun updateUI(currentUser: FirebaseUser?)
     {
 
+    }
+
+    fun send_id()
+    {
+        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("User")
+
+        var id = id_login.text.toString().trim()
+        var user = user_login.text.toString().trim()
+        var profile = Profile(id, user)
+
+        ref.child(user).setValue(profile).addOnCompleteListener {
+            Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
+        }
     }
 }

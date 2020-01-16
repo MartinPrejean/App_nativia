@@ -48,8 +48,9 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     var latitudeMarker: Double = 48.852053
     var longitudeMarker: Double = 2.420395
 
-    var tripList = mutableListOf<trip>()
-    lateinit var ref: DatabaseReference
+    companion object{
+        const val USER = "user"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +76,9 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         var button: Button = findViewById(R.id.btnConfirmPosition)
         button.setOnClickListener{
             var id = sendLocalisation(latitudeMarker, longitudeMarker)
+            val user: User = User(id)
             val intent = Intent(this, ActivityListContact::class.java)
+            intent.putExtra(USER, user)
             startActivity(intent)
         }
 
@@ -115,10 +118,8 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
     }
 
     fun sendLocalisation(latitude: Double, longitude: Double): String{
-        val localisation = "Paris 18"
 
-
-        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Localisation")
+        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Trajet")
 
         //locaId = id group
         var locaId : String? = ref.push().key
@@ -129,15 +130,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         }
 
         return locaId
-    }
-
-    fun saveTrip(){
-        val tripId : String? = ref.push().key
-        val trip = trip(tripId!!, "Hypo")
-
-        ref.child(tripId!!).setValue(trip).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Saved success", Toast.LENGTH_LONG).show()
-        }
     }
 
 

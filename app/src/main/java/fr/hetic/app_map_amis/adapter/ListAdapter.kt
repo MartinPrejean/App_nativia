@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import fr.hetic.app_map_amis.R
-import fr.hetic.app_map_amis.trip
+import fr.hetic.app_map_amis.Trip
 
-class ListAdapter(val mCtx: Context,val layoutResId: Int,val TripList: List<trip>) : ArrayAdapter<trip>(mCtx, layoutResId, TripList){
+class ListAdapter(val mCtx: Context,val layoutResId: Int,val TripList: List<Trip>) : ArrayAdapter<Trip>(mCtx, layoutResId, TripList){
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View{
         val layoutInflater: LayoutInflater = LayoutInflater.from(mCtx)

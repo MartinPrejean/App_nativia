@@ -8,44 +8,50 @@ import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_hour_fix.*
+import kotlinx.android.synthetic.main.activity_list_contact.*
 
-// class HourFixActivity : AppCompatActivity() {
-//
-// override fun onCreate(savedInstanceState: Bundle?) {
-// super.onCreate(savedInstanceState)
-// setContentView(R.layout.activity_hour_fix)
-//
-// var button: Button = findViewById(R.id.btnConfirmPosition)
-// button.setOnClickListener{
-// sendTime()
-// val intent = Intent(this, ActivityListContact::class.java)
-// startActivity(intent)
-// }
-//
-// }
-//
-// fun sendTime(){
-// val dataDay = day_text.text.toString()
-// val month: String = month_text.text.toString()
-// val hour = hour_text.text.toString()
-// val min = min_text.text.toString()
-//
-// val day = dataDay + month
-// val time = hour + min
-//
-//
-// val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Localisation")
-//
-// //locaId = id group
-// var locaId : String? = ref.push().key
-// var loca : Localisation = Localisation(locaId!!, latitude, longitude)
-//
-// ref.child(locaId!!).setValue(loca).addOnCompleteListener {
-// Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
-// }
-//
-// return locaId
-// }
-//
-//
-// }
+
+class HourFixActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_hour_fix)
+        lateinit var user: User
+
+
+        intent?.let{
+            user = intent.extras.getParcelable(ChoosePlace.USER) as User
+            textView4.text = user.toString()
+        }
+
+        var button: Button = findViewById(R.id.btnConfirmRdv)
+        button.setOnClickListener{
+            sendTime(user)
+            /*val intent = Intent(this, ActivityListContact::class.java)
+            startActivity(intent)*/
+        }
+
+
+    }
+    fun sendTime(user: User){
+
+        val day = day_text.text.toString()
+        val month = month_text.text.toString()
+        val hour = hour_text.text.toString()
+        val min = min_text.text.toString()
+
+        val jour = day + " " + month
+        val temps = hour + " " + min
+
+
+        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Trajet")
+
+        //locaId = id group
+        var time: Time = Time(jour, temps)
+
+        ref.child(user.toString()).setValue(time).addOnCompleteListener {
+            Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
+        }
+    }
+
+}
