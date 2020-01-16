@@ -25,7 +25,7 @@ class APIHandler(ctx: Context) {
         {
             override fun getHeaders(): MutableMap<String, String> {
                 val headers = HashMap<String, String>()
-                headers["Authorization"] = "0dbdc129-2b4f-4827-b826-9379293b5869" // Replace with your own auth token
+                headers["Authorization"] = "0dbdc129-2b4f-4827-b826-9379293b5869"
                 return headers
             }
         }

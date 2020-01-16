@@ -13,30 +13,22 @@
     android:background="@color/colorPrimary"
     android:color="#FFFFFF">
 
-    <ImageView
-        android:id="@+id/logo_login"
-        android:layout_width="0dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo2x" />
-
     <EditText
         android:id="@+id/id_login"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/buttoninverse"
+        android:fontFamily="@font/quicksand_medium"
         android:hint="Mail ou tel"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_login" />
+        app:layout_constraintTop_toTopOf="@+id/loading" />
 
     <EditText
         android:id="@+id/user_login"
@@ -46,6 +38,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/buttoninverse"
+        android:fontFamily="@font/quicksand_medium"
         android:hint="Pseudo"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
@@ -53,6 +46,7 @@
         android:paddingRight="20dp"
         android:selectAllOnFocus="true"
         android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_login" />
@@ -67,6 +61,7 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/buttoninverse"
         android:enabled="true"
+        android:fontFamily="@font/quicksand_medium"
         android:text="@string/action_sign_in"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,6 +87,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/quicksand"
+        android:text="Togethere"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/id_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import fr.hetic.app_map_amis.api.APIHandler
 import org.json.JSONObject
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiCall : AppCompatActivity() {
 
@@ -26,4 +28,8 @@ class ApiCall : AppCompatActivity() {
         }
     }
 
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://api.themoviedb.org")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 }
