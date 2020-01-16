@@ -16,11 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HourFixActivity"></activity>
+        <activity android:name=".HourFixActivity">
+
+        </activity>
         <activity android:name=".ActivityListContact" />
         <activity
             android:name=".ActivityLogin"
-            android:label="@string/title_activity_login">
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
