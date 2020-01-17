@@ -28,7 +28,7 @@ interface JourneyService {
 
     // https://api.navitia.io/v1/coverage/fr-nw/journeys?from=2.3749036%3B48.8467927&to=2.2922926%3B48.8583736&
     // %3B = ;
-    @GET("coverage/fr-nw/journeys?from=2.321609%3B48.880315&to=2.420295%3B48.851850&")
+    @GET("coverage/fr-nw/journeys?from=2.321608%3B48.880314&to=2.420294%3B48.851851&")
     fun getJourney(
         @Header("Authorization") authorization:String): Call<JourneyResult>
 }

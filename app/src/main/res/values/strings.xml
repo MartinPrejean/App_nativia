@@ -42,5 +42,8 @@
     <string name="rendez_vous_list">Vos rendez-vous</string>
     <string name="favorites">Favoris</string>
 
+    //API Call
+    <string name="durationTitle">Temps de trajet (en minutes)</string>
+
 
 </resources>

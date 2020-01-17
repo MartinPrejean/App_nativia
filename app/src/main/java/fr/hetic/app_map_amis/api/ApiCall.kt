@@ -36,7 +36,7 @@ class ApiCall : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val navitiaApiKey = "0dbdc129-2b4f-4827-b826-9379293b5869"
+        val navitiaApiKey = "edf22836-7f88-44da-aafd-181aa57b4e16"
 
 
         // Call API avec les coordonnées du Marker + la position de l'utilisateur.
@@ -65,12 +65,13 @@ class ApiCall : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<JourneyResult>, response: Response<JourneyResult>) {
-                response.body()
+                var durationTotal = response.body()?.journeys!![0].durations.total
+                val durationTotalMinutes = durationTotal / 60
+                textApiDuration.text = durationTotalMinutes.toString()
             }
 
         })
 
-        textApiDuration.text = durations.total.toString()
 
     }
 }

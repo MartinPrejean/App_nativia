@@ -8,7 +8,7 @@ class ContactList {
             val list = ArrayList<Contact>()
             list.add(
                 Contact(
-                    "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
+                    "https://i.pravatar.cc/150?img=1",
                     "Capucine",
                     "capugc@hotmail.fr"
 
@@ -16,7 +16,7 @@ class ContactList {
             )
             list.add(
                 Contact(
-                    "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
+                    "https://i.pravatar.cc/150?img=2",
                     "Martin",
                     "martin.prejean@hetic.net"
                 )
@@ -24,28 +24,28 @@ class ContactList {
 
             list.add(
                 Contact(
-                    "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
+                    "https://i.pravatar.cc/150?img=3",
                     "Louis",
                     "0617945724"
                 )
             )
             list.add(
                 Contact(
-                    "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
+                    "https://i.pravatar.cc/150?img=4",
                     "Diego",
                     "0634437187"
                 )
             )
             list.add(
                 Contact(
-                    "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
+                    "https://i.pravatar.cc/150?img=5",
                     "Martine",
                     "martine@gmail.fr"
                 )
             )
             list.add(
                 Contact(
-                    "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
+                    "https://i.pravatar.cc/150?img=6",
                     "Quentin",
                     "0748559864"
                 )

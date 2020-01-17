@@ -41,8 +41,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-
-
         btnStartSearchPlace.setOnClickListener {
             val intent = Intent(this, ChoosePlace::class.java)
             // start your next activity
@@ -133,24 +131,4 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
     }
-
-
-    /*
-    //SAVE USERS UPDATED LOCATION TO THE DATABASE
-    if (currentUser != null) {
-        fun onLocationChanged(location: Location) {
-        mLastLocation = location
-        val latLng = LatLng(location.latitude, location.longitude)
-        val userID: String = FirebaseAuth.getInstance().getCurrentUser().getUid()
-        val ref: DatabaseReference = FirebaseDatabase.getInstance().getReference("Geo")
-
-        //ADD THE UPDATED USER LAT/LNG TO THE DATABASE
-        val geoFire = GeoFire(ref)
-        geoFire.setLocation(userID, GeoLocation(location.latitude, location.longitude))
-    }
-    }
-
-    */
-
-
 }
