@@ -67,15 +67,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
 
-        /*
-        val simpleDateFormat = SimpleDateFormat("yyyyMMdd'T'HHmmss")
-        val date = simpleDateFormat.parse("20200115T143726")
-
-
-        val simpleDateFormat2 = SimpleDateFormat("HH:mm:ss")
-        val stringDate = simpleDateFormat2.format(date)
-         */
-
         var button: Button = findViewById(R.id.btnConfirmPosition)
         button.setOnClickListener{
             var id = sendLocalisation(latitudeMarker, longitudeMarker)
@@ -87,40 +78,6 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
             // intent.putExtra(LOCALISATION, longitudeMarker)
             startActivity(intent)
         }
-
-        /*
-        var button: Button = findViewById(R.id.btnConfirmPosition)
-        ref = FirebaseDatabase.getInstance().getReference("trip")
-        button.setOnClickListener{
-            //saveTrip()
-        }*/
-
-
-
-        /*val date = Date()
-        val now = Date()
-
-        val interval = (now.time - date.time)/1000 // in seconds
-
-
-        ref.addValueEventListener(object: ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
-
-            override fun onDataChange(p0: DataSnapshot) {
-                if(p0!!.exists()){
-                    for(h in p0.children){
-                        val trip = h.getValue(trip::class.java)
-                        tripList.add(trip!!)
-                    }
-
-                    val adapter = ListAdapter(applicationContext, R.layout.activity_trip, tripList)
-                    listview.adapter = adapter
-                }
-            }
-        })*/
-
     }
 
     fun sendLocalisation(latitude: Double, longitude: Double): String{
@@ -137,7 +94,7 @@ class ChoosePlace : AppCompatActivity(), OnMapReadyCallback,
             )
 
         ref.child(locaId!!).setValue(loca).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
+            //Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
         }
 
         return locaId

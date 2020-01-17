@@ -53,7 +53,7 @@ class HourFixActivity : AppCompatActivity() {
             Time(jour, temps)
 
         ref.child(user.toString()).setValue(time).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Rendez-vous créer", Toast.LENGTH_LONG).show()
         }
     }
 

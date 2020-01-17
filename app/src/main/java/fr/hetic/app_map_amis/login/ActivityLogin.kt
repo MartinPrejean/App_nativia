@@ -68,25 +68,23 @@ class ActivityLogin : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(id_login.text.toString(), user_login.text.toString())
                 .addOnCompleteListener(this) { task ->
 
-                    val TAG = "MyMessage"
+                    //val TAG = "MyMessage"
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "createUserWithEmail:success")
+                        //Log.d(TAG, "createUserWithEmail:success")
                         val user = auth.currentUser
                         updateUI(user)
                     } else {
                         // If sign in fails, display a message to the user.
-                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(baseContext, "Authentication failed.",
-                            Toast.LENGTH_SHORT).show()
+                        //Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                        //Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                         updateUI(null)
                     }
 
                 }
         }
 
-    fun updateUI(currentUser: FirebaseUser?)
-    {
+    fun updateUI(currentUser: FirebaseUser?){
 
     }
 
@@ -99,7 +97,7 @@ class ActivityLogin : AppCompatActivity() {
         var profile = Profile(id, user)
 
         ref.child(user).setValue(profile).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
+            //Toast.makeText(applicationContext, "Saved successfully", Toast.LENGTH_LONG).show()
         }
     }
 }

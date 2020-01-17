@@ -2,6 +2,7 @@ package fr.hetic.app_map_amis.mapActivities
 
 import android.os.Bundle
 import android.widget.ListAdapter
+import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -10,12 +11,12 @@ import com.google.firebase.database.*
 import com.google.firebase.firestore.auth.User
 import fr.hetic.app_map_amis.R
 import fr.hetic.app_map_amis.data.Trip
+import kotlinx.android.synthetic.main.activity_trip.*
 
 class GroupTrip : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     lateinit var user: User
-    lateinit var tripList: List<Any>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,21 +26,24 @@ class GroupTrip : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        //Recupération de l'id du trajet
         /*intent?.let{
             user = intent.extras.getParcelable(ChoosePlace.USER) as User
-        }*/
+        }
 
-        //printData()
+        printData(user)*/
     }
 
-    fun printData()
+    //Recupère données du trajet
+    /*fun printData(user: User)
     {
+        lateinit var tripList: ListView
+
         val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Trajet")
         val list: List<Any>
         var i = 0
 
-
-        ref.addValueEventListener(object: ValueEventListener {
+        ref.child(user.toString())addValueEventListener(object: ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
@@ -47,16 +51,17 @@ class GroupTrip : AppCompatActivity(), OnMapReadyCallback {
                 if(p0!!.exists()){
                     for(h in p0.children){
                         val trip = h.getValue(Trip::class.java)
-                        //tripList.add(trip!!)
+                        tripList.add(trip)
                     }
 
-                    //var adapter = ListAdapter(applicationContext, R.layout.activity_trip, tripList)
-                    //listview.adapter = adapter
+                    var adapter = ListAdapter(applicationContext, R.layout.activity_trip, tripList)
+                    listview.adapter = adapter
                 }
             }
         })
 
-    }
+    }*/
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
