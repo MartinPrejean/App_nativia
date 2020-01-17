@@ -52,6 +52,27 @@ class GroupTrip : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient;
 
+    //Recupération de l'id du trajet
+    /*intent?.let{
+        user = intent.extras.getParcelable(ChoosePlace.USER) as User
+    }
+
+    printData(user)*/
+
+    //Recupère données du trajet
+    /*
+    fun printData(user: User)
+    {
+        lateinit var tripList: ListView
+
+        val ref : DatabaseReference = FirebaseDatabase.getInstance().getReference("Trajet")
+        val list: List<Any>
+        var i = 0
+
+        ref.child(user.toString())addValueEventListener(object: ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+     */
+
 
     fun fetchCurrentLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
@@ -95,7 +116,20 @@ class GroupTrip : AppCompatActivity(), OnMapReadyCallback {
                         REQUEST_CHECK_SETTINGS
                     )
                 } catch (sendEx: IntentSender.SendIntentException) {
-                    // Ignore the error.
+                    /*
+                    override fun onDataChange(p0: DataSnapshot) {
+                        if (p0!!.exists()) {
+                            for (h in p0.children) {
+                                val trip = h.getValue(Trip::class.java)
+                                tripList.add(trip)
+                            }
+
+                            var adapter =
+                                ListAdapter(applicationContext, R.layout.activity_trip, tripList)
+                            listview.adapter = adapter
+                        }
+                    }
+                    */
                 }
 
             }
