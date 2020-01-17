@@ -36,6 +36,7 @@
     <string name="button_trip">Cliquer</string>
     <string name="title_activity_group_trip">Map</string>
     <string name="confirm_participants">Confirmer le choix des participants</string>
+    <string name="addNewPerson">Ajouter unr nouvelle personne</string>
 
     // Fragment Choose Place
     <string name="where_to_go">On va où ?</string>

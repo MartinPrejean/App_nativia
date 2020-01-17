@@ -1,7 +1,6 @@
 package fr.hetic.app_map_amis.mapActivities
 
 import android.Manifest
-import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Location
@@ -21,8 +20,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import fr.hetic.app_map_amis.R
-import fr.hetic.app_map_amis.api.ApiCall
-import kotlinx.android.synthetic.main.fragment_custom.*
 
 class GroupTrip : AppCompatActivity(), OnMapReadyCallback {
 
@@ -41,11 +38,11 @@ class GroupTrip : AppCompatActivity(), OnMapReadyCallback {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        btnStartSearchPlace.setOnClickListener {
+        /*btnStartSearchPlace.setOnClickListener {
             val intent = Intent(this, ApiCall::class.java)
             // start your next activity
             startActivity(intent)
-        }
+        }*/
 
     }
 

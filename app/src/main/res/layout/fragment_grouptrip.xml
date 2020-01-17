@@ -6,11 +6,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragment.ListFragment">
 
-    <TextView
-        android:id="@+id/tripInfo"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/addNewPerson"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Horaire du rendez-vous"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="#FFFFFF"
+        android:stateListAnimator="@null"
+        android:text="@string/addNewPerson"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contactRecyclerView"
@@ -21,17 +30,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:text="Ajouter une nouvelle personne"
-        android:textColor="@color/colorPrimary"
-        android:stateListAnimator="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

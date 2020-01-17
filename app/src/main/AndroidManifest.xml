@@ -35,12 +35,11 @@
         <activity
             android:name=".ActivityListContact"
             android:label="Qui peut vous rejoindre ?" />
+
         <activity
             android:name=".login.ActivityLogin"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar">
-
-
 
         </activity>
 
@@ -48,11 +47,6 @@
             android:name=".api.ApiCall"
             android:label="@string/title_activity_api_call"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
 
@@ -64,7 +58,11 @@
             android:name=".mapActivities.MapsActivity"
             android:label="@string/title_activity_maps"
             android:theme="@style/AppThemeNoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
